@@ -60,7 +60,7 @@ const submitHandler = event => {
           <div className="form-control">
             <label htmlFor="currency">Currency</label>
             <input 
-              type="number" 
+              type="text" 
               id="currency" 
               value={enteredCurrency}
               onChange={event => {

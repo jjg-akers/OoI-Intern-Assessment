@@ -3,6 +3,10 @@ export default async (data) => {
     try {
       res = await fetch("/api/wallets/updateWallet", {
           method: 'PUT',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
           body: JSON.stringify(data)
       });
       wallets = await res.json();

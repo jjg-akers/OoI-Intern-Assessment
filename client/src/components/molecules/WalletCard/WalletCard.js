@@ -34,6 +34,8 @@ const WalletCard = (props) => {
     }
 
     const removeWalletHandler = () => {
+
+        //console.log("remvoe: ", props.walletData);
         removeWallet(props.walletData);
     }
     

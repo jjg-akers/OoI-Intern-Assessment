@@ -6,8 +6,6 @@ router.get("/", async (req, res) => {
   const app = req.app.get("app");
   let wallets = [];
 
-  console.log("hit / route");
-
   try {
     wallets = await app.getWallets();
   } catch (e) {
@@ -23,10 +21,8 @@ router.post("/addWallet", async (req, res) => {
   const app = req.app.get("app");
   let wallets = [];
 
-  console.log("hit add route");
-
   try {
-    wallets = await app.getWallets();
+    wallets = await app.addWallet(req.body);
   } catch (e) {
     logger.error(e);
     return res.status(500).send();
@@ -40,10 +36,8 @@ router.put("/updateWallet", async (req, res) => {
   const app = req.app.get("app");
   let wallets = [];
 
-  console.log("hit update route");
-
   try {
-    wallets = await app.getWallets();
+    wallets = await app.updateWallet(req.body);
   } catch (e) {
     logger.error(e);
     return res.status(500).send();
@@ -57,10 +51,8 @@ router.delete("/deleteWallet", async (req, res) => {
   const app = req.app.get("app");
   let wallets = [];
 
-  console.log("hit delete route");
-
   try {
-    wallets = await app.getWallets();
+    wallets = await app.deleteWallet(req.body);
   } catch (e) {
     logger.error(e);
     return res.status(500).send();
