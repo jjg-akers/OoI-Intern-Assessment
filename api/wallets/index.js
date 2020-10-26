@@ -6,6 +6,8 @@ router.get("/", async (req, res) => {
   const app = req.app.get("app");
   let wallets = [];
 
+  // console.log("hit get route");
+
   try {
     wallets = await app.getWallets();
   } catch (e) {
@@ -13,6 +15,8 @@ router.get("/", async (req, res) => {
     return res.status(500).send();
   }
   res.json(wallets);
+
+  // console.log("wallets: ", wallets);
 });
 
 module.exports = router;
