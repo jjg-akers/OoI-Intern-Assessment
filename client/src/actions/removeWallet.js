@@ -1,7 +1,7 @@
 export default async (data) => {
     let res, wallets;
     try {
-      res = await fetch("/api/deleteWallet", {
+      res = await fetch("/api/wallets/deleteWallet", {
           method: 'DELETE',
           body: JSON.stringify(data)
       });

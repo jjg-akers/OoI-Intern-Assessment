@@ -1,7 +1,7 @@
 export default async (data) => {
     let res, wallets;
     try {
-      res = await fetch("/api/addWallet", {
+      res = await fetch("/api/wallets/addWallet", {
           method: 'POST',
           body: JSON.stringify(data)
       });

@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ({ wallets, rate }) {
 
-  console.log("wallets: ", wallets);
+  // console.log("wallets: ", wallets);
 
   const classes = useStyles();
 

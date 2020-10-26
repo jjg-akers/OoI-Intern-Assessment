@@ -6,7 +6,58 @@ router.get("/", async (req, res) => {
   const app = req.app.get("app");
   let wallets = [];
 
-  // console.log("hit get route");
+  console.log("hit / route");
+
+  try {
+    wallets = await app.getWallets();
+  } catch (e) {
+    logger.error(e);
+    return res.status(500).send();
+  }
+  res.json(wallets);
+
+  // console.log("wallets: ", wallets);
+});
+
+router.post("/addWallet", async (req, res) => {
+  const app = req.app.get("app");
+  let wallets = [];
+
+  console.log("hit add route");
+
+  try {
+    wallets = await app.getWallets();
+  } catch (e) {
+    logger.error(e);
+    return res.status(500).send();
+  }
+  res.json(wallets);
+
+  // console.log("wallets: ", wallets);
+});
+
+router.put("/updateWallet", async (req, res) => {
+  const app = req.app.get("app");
+  let wallets = [];
+
+  console.log("hit update route");
+
+  try {
+    wallets = await app.getWallets();
+  } catch (e) {
+    logger.error(e);
+    return res.status(500).send();
+  }
+  res.json(wallets);
+
+  // console.log("wallets: ", wallets);
+});
+
+router.delete("/deleteWallet", async (req, res) => {
+  const app = req.app.get("app");
+  let wallets = [];
+
+  console.log("hit delete route");
 
   try {
     wallets = await app.getWallets();
