@@ -14,9 +14,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function ({ wallets, rate }) {
-
-  // console.log("wallets: ", wallets);
+export default function ({ wallets, rate, tab }) {
 
   const classes = useStyles();
 
@@ -30,14 +28,29 @@ export default function ({ wallets, rate }) {
     setShowAddForm(false);
   }
 
+  let filteredWallets = '';
 
-  const ethWallets = wallets.filter(wallet => {
+  if (tab === 1) {
+    console.log("tab: ", tab);
+     filteredWallets = wallets.filter(wallet => {
     // console.log("wallet: ", wallet.currency);
-   return wallet.currency === 'Ethereum';
-  });
+    return wallet.currency === 'Ethereum';
+    });
+
+    console.log("ethwallet: ", filteredWallets);
+
+  } else {
+       filteredWallets = wallets.filter(wallet => {
+    // console.log("wallet: ", wallet.currency);
+        return wallet.currency !== 'Ethereum';
+      });
+
+      console.log("ethwallet: ", filteredWallets);
+
+  }
 
   // extract wallet info and populate WalletCards
-  const walletCards = wallets.map(w => {
+  const walletCards = filteredWallets.map(w => {
     return <WalletCard walletData={w} rate={rate}/>
   });
 

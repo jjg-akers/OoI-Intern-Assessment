@@ -66,12 +66,13 @@ const StyledTab = withStyles((theme) => ({
   },
 }))((props) => <Tab disableRipple {...props} />);
 
-export default function PageLayout({ tabs, children }) {
+export default function PageLayout({ tabs, children, settab }) {
   const classes = useStyles();
   const [activeTab, setActiveTab] = useState(0);
 
   const changeView = (event, newTab) => {
     setActiveTab(newTab);
+    settab(activeTab);
   };
 
   const theme = useTheme();
