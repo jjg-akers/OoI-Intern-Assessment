@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 
 import './AddForm.css';
 
+import {addWallet} from '../../../actions';
+
+
 const AddForm = (props) => {
 
     const [enteredName, setEnteredName] = useState('');
@@ -11,15 +14,14 @@ const AddForm = (props) => {
   
 const submitHandler = event => {
     event.preventDefault();
-    console.log("form submitted");
 
-    fetch('/addWallet', {
-      method: 'POST'
-    })
-    .then(response => {
-      return (response.json());
-    })
-    .then(data => console.log(data))
+    let data = {
+      name: enteredName,
+      address: enteredAddress,
+      currency: enteredCurrency
+    };
+    // console.log("form submitted");
+    addWallet(data)
     .then(props.cancel);
 };
 

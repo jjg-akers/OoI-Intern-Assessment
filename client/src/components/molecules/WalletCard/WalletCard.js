@@ -7,8 +7,7 @@ import CardAddress from '../../atoms/Text/CardAddress';
 import CardBalance from '../../atoms/Text/CardBalance';
 import EditForm from '../Foms/EditForm';
 
-import {usdFormatter, cryptoFormatter} from '../../../util/index';
-
+import {removeWallet} from '../../../actions';
 // import CardAddress from '../../atoms/Text/CardAddress';
 
 
@@ -19,7 +18,7 @@ import ContainedBtn from '../../atoms/Button/Contained';
 const weiToEth = (wei) => {
     // console.log("wei: ", wei/Math.pow(10,18));
     // console.log("crypto: ",cryptoFormatter(wei/Math.pow(10,18)));
-    return cryptoFormatter(wei/Math.pow(10,18));
+    return wei/Math.pow(10,18);
 }
 
 const WalletCard = (props) => {
@@ -32,6 +31,10 @@ const WalletCard = (props) => {
   
     const cancelEditWallet = () => {
       setShowEditForm(false);
+    }
+
+    const removeWalletHandler = () => {
+        removeWallet(props.walletData);
     }
     
 
@@ -79,7 +82,7 @@ const WalletCard = (props) => {
             <EditForm show={showEditForm} cancel={cancelEditWallet}/>
 
             <ContainedBtn onClick={editWallet}> Edit </ContainedBtn>
-            <ContainedBtn> Remove </ContainedBtn>
+            <ContainedBtn onClick={removeWalletHandler}> Remove </ContainedBtn>
             </div>
 
             {/* <OutlinedBtn>outlined</OutlinedBtn>

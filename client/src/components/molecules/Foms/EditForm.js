@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 
 import './AddForm.css';
 
+import {editWallet} from '../../../actions';
 
 const AddForm = (props) => {
 
@@ -10,23 +11,17 @@ const AddForm = (props) => {
     const [enteredCurrency, setEnteredCurrency] = useState('');
 
    const putDataHandler = (event) =>{
-      event.preventDefault();
 
-      fetch('/updateWallet', {
-        method: 'PUT'
-      })
-      .then(response => {
-        return (response.json());
-      })
-      .then(data => console.log(data))
+    let data = {
+      name: enteredName,
+      address: enteredAddress,
+      currency: enteredCurrency
+    };
+
+      event.preventDefault(data);
+      editWallet(data)
       .then(props.cancel);
   }
-
-  
-const submitHandler = event => {
-    event.preventDefault();
-    console.log("form submitted");
-};
 
   return (
     <div className="Modal" 
@@ -36,7 +31,7 @@ const submitHandler = event => {
         opacity: props.show ? '1': '0'
     }}
     >
-        <form onSubmit={submitHandler}>
+        <form onSubmit={putDataHandler}>
           <div className="form-control">
             <label htmlFor="name">Name</label>
             <input 
@@ -72,7 +67,7 @@ const submitHandler = event => {
                 />
           </div>
           <div className="form__action">
-            <button type="submit" onClick={putDataHandler}>SUBMIT</button>
+            <button type="submit">SUBMIT</button>
             <button onClick={props.cancel}>CANCEL</button>
           </div>
         </form>
